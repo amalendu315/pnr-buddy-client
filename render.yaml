@@ -1,0 +1,14 @@
+# Exported from Render on 2024-11-09T21:04:42Z
+services:
+- type: web
+  name: pnr-buddy-client
+  runtime: node
+  repo: https://github.com/amalendu315/pnr-buddy-client
+  plan: free
+  envVars:
+  - key: SERVER_URL
+    sync: false
+  region: oregon
+  buildCommand: npm install && npm run build
+  startCommand: set PORT=3005 && npm run start
+version: "1"
