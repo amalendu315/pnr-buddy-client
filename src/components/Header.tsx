@@ -13,12 +13,12 @@ const Header = () => {
         <ul className="flex space-x-4 justify-evenly items-center pt-3">
           <li className="text-xl font-bold">
             <Link to="/" className="hover:text-red-600 text-white">
-              PNR Buddy
+              Namelist Formatter
             </Link>
           </li>
           <li className="text-xl font-bold">
             <Link to="/pnrdetails" className="hover:text-red-600 text-white">
-              PNR Details
+              Purchase PNR
             </Link>
           </li>
           {/* <li>
