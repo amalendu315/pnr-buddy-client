@@ -61,7 +61,7 @@ const FormUpload = () => {
       <div className="w-full h-[280px] mt-16">
         <form
           onSubmit={handleSubmit}
-          className="w-full h-[280px] flex flex-col justify-around items-center"
+          className="w-full h-[280px] flex flex-col justify-around items-center pnrForm"
         >
           <p className="text-blue-700 font-bold">{fileName}</p>
           <input
