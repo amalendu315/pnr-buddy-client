@@ -94,7 +94,6 @@ const FlightDataComponent: React.FC = () => {
               className={`mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md border text-center`}
             >
               <option value="akasa">Akasa Air</option>
-              <option value="airasia">AirAsia</option>
               <option value="spicejet">SpiceJet</option>
             </select>
           </div>
