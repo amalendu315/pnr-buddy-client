@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  process.env.SERVER_URL || "https://pnr-buddy-server-1.onrender.com"; 
+  process.env.SERVER_URL || "http://localhost:3004"; 
 
 
 // ... (other interfaces for FlightData, etc. - you'll need to define these based on the API responses) ...
@@ -35,6 +35,26 @@ export const fetchSpiceJetData = async (pnrs: string[]) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching Spicejet data:", error);
+    throw error;
+  }
+};
+
+export const fetchAkasaStatus = async (formData:any) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/flightops/akasa`, formData);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Akasa Status:", error);
+    throw error;
+  }
+};
+
+export const fetchSpicejetStatus = async (formData:any)=>{
+  try {
+    const response = await axios.post(`${BASE_URL}/flightops/spicejet`, formData);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Spicejet Status:", error);
     throw error;
   }
 };
