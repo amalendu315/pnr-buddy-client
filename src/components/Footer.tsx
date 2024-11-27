@@ -1,15 +1,25 @@
-import React from 'react'
+"use client";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
-  return (
-    <div>
-      <img
-        src="/assets/SiteFooter.png"
-        alt="Footer"
-        className="left-0 h-[450px] w-full relative -z-10"
-      />
-    </div>
-  );
-}
+  const [mounted, setMounted] = useState(false);
 
-export default Footer
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // Or a loading indicator
+  }
+  return (
+    <footer className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 w-full">
+      <div className="container mx-auto text-center">
+        <p className="text-lg text-white">
+          &copy; AIR IQ Inc {new Date().getFullYear()}
+        </p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

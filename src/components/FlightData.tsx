@@ -6,6 +6,7 @@ import {
   fetchAirAsiaData,
   fetchSpiceJetData,
 } from "../api/flightDataAPI";
+import toast from "react-hot-toast";
 
 const FlightDataComponent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -59,6 +60,21 @@ const FlightDataComponent: React.FC = () => {
     setAirline(e.target.value);
   };
 
+  const handleCopyButtonClick = () => {
+    if (flightData) {
+      navigator.clipboard
+        .writeText(flightData)
+        .then(() => {
+          // Optionally show a success message to the user
+          toast.success("Flight data copied to clipboard!");
+        })
+        .catch((err) => {
+          // Optionally show an error message to the user
+          toast.error("Failed to copy flight data: ", err);
+        });
+    }
+  };
+
   const handleClearButtonClick = (e:React.MouseEvent<HTMLButtonElement>)=>{
     e.preventDefault();
     setFlightData(null);
@@ -67,15 +83,15 @@ const FlightDataComponent: React.FC = () => {
   }
   
   return (
-    <>
-      <div className="mt-0 flex justify-center animate-pulse">
+    <div className="w-full">
+      <div className="flex justify-center animate-pulse">
         <img
-          src="/assets/pnrdetails.jpg"
+          src="/assets/pnrdetails.png"
           alt=""
           className="w-[330px] h-[145px]"
         />
       </div>
-      <div className="mx-auto p-4 h-[45vh] flex flex-col justify-start">
+      <div className="mx-auto p-4 h-[45vh] w-full flex flex-col justify-start pt-0">
         <form
           onSubmit={handleSubmit}
           className={`flex flex-col md:flex-row gap-4 w-full`} // Changed to flex-row
@@ -127,31 +143,42 @@ const FlightDataComponent: React.FC = () => {
           {/* Flight Data Container */}
           {flightData && (
             <div className="relative">
-              <pre className="bg-gray-100 p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap">
-                {flightData}
-              </pre>
-
-              {/* Clear button overlay */}
-              <button
-                onClick={(e)=>handleClearButtonClick(e)}
-                className="absolute top-2 right-2  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Clear Data
-              </button>
+              <div className="absolute top-2 right-2 flex gap-2">
+                <button
+                  onClick={(e) => handleCopyButtonClick()}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Copy Data
+                </button>
+                <button
+                  onClick={(e) => handleClearButtonClick(e)}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Clear Data
+                </button>
+              </div>
+              <div className="max-h-[770px] overflow-y-auto">
+                <pre className="bg-gray-100 p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap">
+                  {flightData}
+                </pre>
+              </div>
             </div>
           )}
 
           {/* Error Container */}
           {errors?.length && (
             <div className="mt-4 ">
+              {/* Remove max height from here */}
+              <div className="max-h-[770px] overflow-y-auto">
               <pre className="bg-red-500 p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap">
                 {errors}
               </pre>
+              </div>
             </div>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,33 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+import { navMenu } from "../constants"
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const matchingLink = navMenu.find((link) => link.href === pathname);
+
+  const displayedRouteName = matchingLink ? (
+    <div className="flex items-center">
+      <Link
+        to="/"
+        className="text-gray-300 hover:text-white transition-colors text-lg"
+      >
+        Home
+      </Link>
+      <span className="mx-2 text-gray-400 text-lg">&gt;</span> {/* Separator */}
+      <span className="capitalize text-gray-200 text-lg">
+        {matchingLink.name}
+      </span>
+    </div>
+  ) : (
+    <span className="text-gray-200 text-lg">Home</span>
+  );
+
   return (
-    <header className="relative -top-1 w-full mb-5">
-      <img
-        src="/assets/SiteHeader.png"
-        alt="Header"
-        className="w-full h-[150px]"
-      />
-      <nav className="absolute top-0 left-0 w-full p-4">
-        <ul className="flex space-x-4 justify-evenly items-center pt-3">
-          <li className="text-xl font-bold">
-            <Link to="/" className="hover:text-red-600 text-white">
-              Namelist Formatter
-            </Link>
-          </li>
-          <li className="text-xl font-bold">
-            <Link to="/pnrdetails" className="hover:text-red-600 text-white">
-              Purchase PNR
-            </Link>
-          </li>
-          {/* <li>
-            <Link to="/contact" className="hover:underline text-white">
-              Contact
-            </Link>
-          </li> */}
-        </ul>
-      </nav>
+    <header className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 w-full">
+      <div className="flex justify-between items-center">
+        {displayedRouteName}
+        <div className="flex items-center gap-2">
+          <span className="text-gray-300 text-xl">Co-Worker</span>
+          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+        </div>
+      </div>
     </header>
   );
 };

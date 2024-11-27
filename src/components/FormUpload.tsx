@@ -54,7 +54,7 @@ const FormUpload = () => {
     };
 
   return (
-    <div className="relative top-12 w-[350px] h-[480px] my-0 mx-auto rounded-xl pt-12 flex flex-col shadow-lg bg-gray-50">
+    <div className="relative top-[240px] w-[350px] h-[480px] my-0 mx-auto rounded-xl pt-12 flex flex-col shadow-lg bg-gray-50">
       <div className="mt-0 flex justify-center animate-pulse">
         <img src="/assets/logo5.png" alt="" className="w-[230px]" />
       </div>
