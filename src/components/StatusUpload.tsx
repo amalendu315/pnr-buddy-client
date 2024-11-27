@@ -166,7 +166,7 @@ const StatusUpload = () => {
           </form>
         </div>
       </div>
-      {flightData && (
+      {flightData.length && (
         <div className="mt-16 w-full">
           {/* Flight Data Container */}
             <div className="relative">
