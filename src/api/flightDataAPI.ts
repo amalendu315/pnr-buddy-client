@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  process.env.SERVER_URL || "https://pnr-buddy-server-1.onrender.com"; 
+  process.env.SERVER_URL || "https://pnr-buddy-server-production.up.railway.app"; 
 
 
 // ... (other interfaces for FlightData, etc. - you'll need to define these based on the API responses) ...
