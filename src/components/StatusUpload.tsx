@@ -84,7 +84,6 @@ const StatusUpload = () => {
           const [
             pnr,
             origin,
-            destination,
             flight,
             flightNumber,
             oldPur,
@@ -100,19 +99,18 @@ const StatusUpload = () => {
 
           // Create a single object with all key-value pairs
           return {
-            PNR: pnr,
-            Origin: origin,
-            Destination: destination,
-            Flight: flight,
-            FlightNumber: flightNumber,
-            OldPur: oldPur,
-            PAX: pax,
-            OldDate: oldDate,
-            DepDate: depDate,
-            OldDep: oldDep,
-            DepTime: depTime,
-            OldArr: oldArr,
-            ArrTime: arrTime,
+            "PNR": pnr,
+            "Origin & Destination": origin,
+            "Old Flight": flight,
+            "New Flight": flightNumber,
+            "Old Pax": oldPur,
+            "New Pax": pax,
+            "Old Dep Date": oldDate,
+            "New Dep Date": depDate,
+            "Old Departure Time": oldDep,
+            "New Departure Time": depTime,
+            "Old Arrival Time": oldArr,
+            "New Arrival Time": arrTime,
             Remarks: myRemarks,
           };
         });
