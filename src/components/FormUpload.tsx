@@ -1,8 +1,10 @@
 import React,{useState} from 'react';
 import axios from "axios";
+import { LuLoader2 } from 'react-icons/lu';
 
 const FormUpload = () => {
 
+    const [isLoading, setIsLoading] = useState(false)
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [fileName, setFileName] = useState<string>("Select File");
 
@@ -14,6 +16,7 @@ const FormUpload = () => {
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
+      setIsLoading(true);
       event.preventDefault();
       if (selectedFile) {
         const formData = new FormData();
@@ -49,6 +52,8 @@ const FormUpload = () => {
         } catch (error) {
           // Handle error
           console.error("Error converting file:", error);
+        } finally{
+          setIsLoading(false);
         }
       }
     };
@@ -76,11 +81,15 @@ const FormUpload = () => {
           <button
             type="submit"
             className="bg-green-400 text-black px-6 py-2 rounded mt-4 hover:bg-green-500"
+            disabled={isLoading}
           >
             DOWNLOAD
           </button>
         </form>
       </div>
+      {isLoading && (
+        <LuLoader2  className='h-6 w-6 animate-spin'  />
+      )}
     </div>
   );
 }

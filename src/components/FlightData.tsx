@@ -7,6 +7,7 @@ import {
   fetchSpiceJetData,
 } from "../api/flightDataAPI";
 import toast from "react-hot-toast";
+import { LuLoader2 } from "react-icons/lu";
 
 const FlightDataComponent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -175,6 +176,10 @@ const FlightDataComponent: React.FC = () => {
               </pre>
               </div>
             </div>
+          )}
+
+          {isLoading && (
+            <LuLoader2 className="h-6 w-6 animate-spin"/>
           )}
         </div>
       </div>

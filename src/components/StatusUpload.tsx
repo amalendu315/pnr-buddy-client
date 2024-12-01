@@ -3,9 +3,11 @@ import toast from 'react-hot-toast';
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import { fetchAkasaStatus, fetchSpicejetStatus } from '../api/flightDataAPI';
+import { LuLoader2 } from 'react-icons/lu';
 
 const StatusUpload = () => {
 
+    const [isLoading, setIsLoading] = useState(false);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [fileName, setFileName] = useState<string>("Select File");
     const [flightData, setFlightData] = useState<string[]>([]);
@@ -39,6 +41,7 @@ const StatusUpload = () => {
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
+      setIsLoading(true);
       event.preventDefault();
       if (selectedFile) {
         const formData = new FormData();
@@ -74,6 +77,8 @@ const StatusUpload = () => {
           setErrors(data.errors.length > 0 ? data.errors.join("\n") : null);
         } catch (error:any) {
           setErrors(error.message || "Error fetching flight data.");
+        } finally{
+          setIsLoading(false);
         }
       }
     };
@@ -158,6 +163,7 @@ const StatusUpload = () => {
             <button
               type="submit"
               className="bg-green-400 text-black px-6 py-2 rounded mt-4 hover:bg-green-500"
+              disabled={isLoading}
             >
               FETCH STATUS
             </button>
@@ -208,6 +214,9 @@ const StatusUpload = () => {
             </div>
           )}
         </div>
+      )}
+      {isLoading && (
+        <LuLoader2 className='w-6 h-6 animate-spin'  />
       )}
     </>
   );
