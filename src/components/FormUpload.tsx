@@ -25,7 +25,7 @@ const FormUpload = () => {
         try {
           // Make sure the URL is correct for your server
           const response = await axios.post(
-            `https://pnr-buddy-server-1.onrender.com/convert`,
+            `http://pnr-buddy-server-production.up.railway.app/convert`,
             formData,
             {
               responseType: "arraybuffer",
