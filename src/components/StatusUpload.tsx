@@ -63,7 +63,8 @@ const StatusUpload = () => {
           let data;
           switch (airline) {
             case "akasa":
-                data = await fetchAkasaStatus(formData)
+                toast.error("Sorry! Akasa Fetching Is Not Available Right Now");
+                data=[];
               break;
             case "spicejet":
               data = await fetchSpicejetStatus(formData);
