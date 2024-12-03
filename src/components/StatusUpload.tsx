@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import toast from 'react-hot-toast';
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
-import { fetchAkasaStatus, fetchSpicejetStatus } from '../api/flightDataAPI';
+import { fetchSpicejetStatus } from '../api/flightDataAPI';
 import { LuLoader2 } from 'react-icons/lu';
 
 const StatusUpload = () => {
