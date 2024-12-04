@@ -125,17 +125,17 @@ const StatusUpload = () => {
           } else {
             return {
               PNR: pnr,
-              "Origin & Destination": `${origin} ${destination}`,
-              "Old Flight": flight,
-              "New Flight": flightNumber,
-              "Old Pax": oldPur,
-              "New Pax": pax,
-              "Old Dep Date": oldDate,
-              "New Dep Date": depDate,
-              "Old Departure Time": oldDep,
-              "New Departure Time": depTime,
-              "Old Arrival Time": oldArr,
-              "New Arrival Time": arrTime,
+              OriginDestination: `${origin} ${destination}`,
+              OldFlight: flight,
+              NewFlight: flightNumber,
+              OldPax: oldPur,
+              NewPax: pax,
+              OldDepDate: oldDate,
+              NewDepDate: depDate,
+              OldDepartureTime: oldDep,
+              NewDepartureTime: depTime,
+              OldArrivalTime: oldArr,
+              NewArrivalTime: arrTime,
               Remarks: myRemarks,
             };
           }
