@@ -9,7 +9,6 @@
 /coverage
 
 # production
-/build
 /my_key_pair.pem
 
 # misc
