@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import toast from 'react-hot-toast';
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
-import { fetchSpicejetStatus } from '../api/flightDataAPI';
+import { fetchAkasaStatus, fetchSpicejetStatus } from '../api/flightDataAPI';
 import { LuLoader2 } from 'react-icons/lu';
 
 const StatusUpload = () => {
@@ -63,7 +63,7 @@ const StatusUpload = () => {
           let data;
           switch (airline) {
             case "akasa":
-                toast.error("Sorry! Akasa Fetching Is Not Available Right Now");
+              data = await fetchAkasaStatus(formData);
               break;
             case "spicejet":
               data = await fetchSpicejetStatus(formData);
