@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  "http://ec2-13-232-29-185.ap-south-1.compute.amazonaws.com:3004"; 
+  "http://ec2-3-110-55-153.ap-south-1.compute.amazonaws.com:3004"; 
 
 
 // ... (other interfaces for FlightData, etc. - you'll need to define these based on the API responses) ...
