@@ -25,7 +25,7 @@ const FormUpload = () => {
         try {
           // Make sure the URL is correct for your server
           const response = await axios.post(
-            `http://ec2-3-110-55-153.ap-south-1.compute.amazonaws.com:3004/convert`,
+            `https://ec2-3-110-55-153.ap-south-1.compute.amazonaws.com:3004/convert`,
             formData,
             {
               responseType: "arraybuffer",
