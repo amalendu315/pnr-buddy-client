@@ -34,11 +34,6 @@ const FormUpload = () => {
           // Access the filename and file data from the response data
           const fileData = await response.data;
 
-          // Get filename from response headers (if available)
-          const filename = response.headers["content-disposition"]
-            ? response.headers["content-disposition"].split("filename=")[1]
-            : "converted_file.xlsx"; // Default filename
-
           const url = window.URL.createObjectURL(
             new Blob([fileData], {
               type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -46,7 +41,7 @@ const FormUpload = () => {
           );
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute("download", filename);
+          link.setAttribute("download", `${fileName.split(" ")[0]} Namelist.xlsx`);
           document.body.appendChild(link);
           link.click();
         } catch (error) {
