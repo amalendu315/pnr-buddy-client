@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import toast from 'react-hot-toast';
+import clipboardy from "clipboardy";
 // import * as FileSaver from "file-saver";
 // import * as XLSX from "xlsx";
 import { fetchAkasaStatus, fetchSpicejetStatus } from '../api/flightDataAPI';
@@ -21,18 +22,17 @@ const StatusUpload = () => {
     };
 
     const handleCopyButtonClick = () => {
-      const flightDataString = flightData.join("\n");
-      if (flightData) {
-        navigator.clipboard
-          .writeText(flightDataString)
-          .then(() => {
-            toast.success("Flight data copied to clipboard!");
-          })
-          .catch((err) => {
-            toast.error("Failed to copy flight data: ", err);
-          });
-      }
-    };
+  const flightDataString = flightData.join("\n");
+  if (flightData) {
+    clipboardy.write(flightDataString)
+      .then(() => {
+        toast.success("Flight data copied to clipboard!");
+      })
+      .catch((err) => {
+        toast.error("Failed to copy flight data: ", err);
+      });
+  }
+};
 
     const handleClearButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
