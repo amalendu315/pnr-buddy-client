@@ -18,18 +18,45 @@ const StatusUpload = () => {
       }
     };
 
+    // const handleCopyButtonClick = () => {
+    //   const flightDataString = flightData.join("\n");
+    //   if (flightData) {
+    //     navigator.clipboard
+    //       .writeText(flightDataString)
+    //       .then(() => {
+    //         toast.success("Flight data copied to clipboard!");
+    //       })
+    //       .catch((err) => {
+    //         console.log('err', err)
+    //         toast.error("Failed to copy flight data: ", err);
+    //       });
+    //   }
+    // };
     const handleCopyButtonClick = () => {
       const flightDataString = flightData.join("\n");
       if (flightData) {
-        navigator.clipboard
-          .writeText(flightDataString)
-          .then(() => {
-            toast.success("Flight data copied to clipboard!");
-          })
-          .catch((err) => {
-            console.log('err', err)
-            toast.error("Failed to copy flight data: ", err);
-          });
+        // Create a temporary text area element
+        const textArea = document.createElement("textarea");
+        textArea.value = flightDataString;
+        document.body.appendChild(textArea);
+
+        // Select the text
+        textArea.select();
+
+        try {
+          // Copy the selected text to the clipboard
+          document.execCommand("copy");
+          console.log("Text copied to clipboard:", flightDataString);
+          // Display a success message or notification
+          toast.success("Flight data copied to clipboard!");
+        } catch (err) {
+          console.error("Failed to copy text:", err);
+          // Display an error message or notification
+          toast.error("Failed to copy text. Please try again.");
+        }
+
+        // Remove the temporary text area
+        document.body.removeChild(textArea);
       }
     };
 
