@@ -46,7 +46,6 @@ const StatusUpload = () => {
         try {
           // Copy the selected text to the clipboard
           document.execCommand("copy");
-          console.log("Text copied to clipboard:", flightDataString);
           // Display a success message or notification
           toast.success("Flight data copied to clipboard!");
         } catch (err) {
