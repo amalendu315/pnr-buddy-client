@@ -1,8 +1,5 @@
 import React,{useState} from 'react';
 import toast from 'react-hot-toast';
-import clipboardy from "clipboardy";
-// import * as FileSaver from "file-saver";
-// import * as XLSX from "xlsx";
 import { fetchAkasaStatus, fetchSpicejetStatus } from '../api/flightDataAPI';
 import { LuLoader2 } from 'react-icons/lu';
 
@@ -22,17 +19,19 @@ const StatusUpload = () => {
     };
 
     const handleCopyButtonClick = () => {
-  const flightDataString = flightData.join("\n");
-  if (flightData) {
-    clipboardy.write(flightDataString)
-      .then(() => {
-        toast.success("Flight data copied to clipboard!");
-      })
-      .catch((err) => {
-        toast.error("Failed to copy flight data: ", err);
-      });
-  }
-};
+      const flightDataString = flightData.join("\n");
+      if (flightData) {
+        navigator.clipboard
+          .writeText(flightDataString)
+          .then(() => {
+            toast.success("Flight data copied to clipboard!");
+          })
+          .catch((err) => {
+            console.log('err', err)
+            toast.error("Failed to copy flight data: ", err);
+          });
+      }
+    };
 
     const handleClearButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
@@ -82,86 +81,6 @@ const StatusUpload = () => {
         }
       }
     };
-
-    // const handleExport = () => {
-    //   if(flightData){
-    //     const formattedResults = flightData.map((result: string) => {
-    //       // J7H4NJ|AMD|BOM|1108|1108|6|5|2024-11-27|2024-11-27|21:10 PM|16:55 PM|22:27 PM|18:20 PM|BAD
-    //       const [
-    //         pnr,
-    //         origin,
-    //         destination,
-    //         flight,
-    //         flightNumber,
-    //         oldPur,
-    //         pax,
-    //         oldDate,
-    //         depDate,
-    //         oldDep,
-    //         depTime,
-    //         oldArr,
-    //         arrTime,
-    //         myRemarks,
-    //       ] = result.split("|");
-
-
-    //       // Create a single object with all key-value pairs
-    //       if(result === pnr){
-    //         return {
-    //           PNR: pnr.split(" ")[0],
-    //           "Origin & Destination": ` `,
-    //           "Old Flight": " ",
-    //           "New Flight": " ",
-    //           "Old Pax": " ",
-    //           "New Pax": " ",
-    //           "Old Dep Date": " ",
-    //           "New Dep Date": " ",
-    //           "Old Departure Time": " ",
-    //           "New Departure Time": " ",
-    //           "Old Arrival Time": " ",
-    //           "New Arrival Time": " ",
-    //           Remarks: "Cancelled",
-    //         };
-    //       } else {
-    //         return {
-    //           PNR: pnr,
-    //           OriginDestination: `${origin} ${destination}`,
-    //           OldFlight: flight,
-    //           NewFlight: flightNumber,
-    //           OldPax: oldPur,
-    //           NewPax: pax,
-    //           OldDepDate: oldDate,
-    //           NewDepDate: depDate,
-    //           OldDepartureTime: oldDep,
-    //           NewDepartureTime: depTime,
-    //           OldArrivalTime: oldArr,
-    //           NewArrivalTime: arrTime,
-    //           Remarks: myRemarks,
-    //         };
-    //       }
-    //     });
-
-
-    //      const flattenedResults = formattedResults.flat();
-
-    //      console.log('flattenedResults', flattenedResults)
-
-    //     const worksheet = XLSX.utils.json_to_sheet(flattenedResults);
-    //     const workbook = XLSX.utils.book_new();
-    //     XLSX.utils.book_append_sheet(workbook, worksheet, "Flight Data");
-    //     const excelBuffer = XLSX.write(workbook, {
-    //       bookType: "xlsx",
-    //       type: "array",
-    //     });
-    //     const data = new Blob([excelBuffer], {
-    //       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
-    //     });
-    //     FileSaver.saveAs(data, "flight_status.xlsx");
-    //     toast.success("File exported successfully")
-    //   } else{
-    //     toast.error("No Flight Data!")
-    //   }
-    // };
 
   return (
     <>
