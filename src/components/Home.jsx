@@ -1,7 +1,29 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Home() {
+  const navigate = useNavigate();
   const [isMounted, setIsMounted] = useState(false);
+
+  const handleSelectChange = (event) => {
+    const selectedOption = event.target.value;
+
+    switch (selectedOption) {
+      case "option1":
+        navigate("/namelist");
+        break;
+      case "option2":
+        navigate("/pnrdetails");
+        break;
+      case "option3":
+        navigate("/flightops");
+        break;
+      default:
+        // Handle default case or error
+        break;
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true); // No need to toggle the state
@@ -12,96 +34,24 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full h-full flex-grow">
-      <img
-        src="/assets/logo2.png"
-        alt="Background"
-        className="w-full h-full object-contain"
-      />
-
-      <div className="absolute inset-0 bg-black/50"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center justify-center w-full h-full">
-        <div className="flex flex-col gap-4">
-          <p className="text-white text-lg mb-4 flex flex-col items-center gap-36">
-            {/* <span className="flex flex-col items-center justify-center">
-              New user? <span>Click the sidebar links to navigate.</span>
-              <svg
-                className="w-6 h-6 rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 5l7 7-7 7"
-                />
-              </svg>
-            </span> */}
-            <span className="flex flex-col items-center justify-center text-2xl">
-              Namelist Formatting ?
-              <span className="text-green-500">
-                Click the NAMELIST to navigate.
-              </span>
-              <svg
-                className="w-6 h-6 rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 5l7 7-7 7"
-                />
-              </svg>
-            </span>
-            <span className="flex flex-col items-center justify-center text-2xl">
-              PNR Purchase Data Needed ?{" "}
-              <span className="text-green-500">
-                Click the PNR Purchase to navigate.
-              </span>
-              <svg
-                className="w-6 h-6 rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 5l7 7-7 7"
-                />
-              </svg>
-            </span>
-            <span className="flex flex-col items-center justify-center text-2xl">
-              GOOD / BAD Fetching ?{" "}
-              <span className="text-green-500">
-                Click the FLIGHT OPS to navigate.
-              </span>
-              <svg
-                className="w-6 h-6 rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 5l7 7-7 7"
-                />
-              </svg>
-            </span>
-          </p>
-        </div>
+    <div class="flex justify-center items-center h-screen">
+      <div class="bg-white border border-gray-300 rounded-md shadow-md p-4">
+        <h2 class="text-lg font-bold mb-4">What are you here for?</h2>
+        <select
+          class="w-full bg-white border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+          onChange={handleSelectChange}
+        >
+          <option value="">Select an option</option>
+          <option value="option1" class="text-gray-900">
+            Namelist Formatting !
+          </option>
+          <option value="option2" class="text-gray-900">
+            PNR Purchase Data !
+          </option>
+          <option value="option3" class="text-gray-900">
+            Flight Operations "GOOD/BAD" !
+          </option>
+        </select>
       </div>
     </div>
   );
