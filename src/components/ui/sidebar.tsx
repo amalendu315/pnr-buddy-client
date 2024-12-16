@@ -27,8 +27,6 @@ const Sidebar = () => {
     <aside className="w-1/5 bg-gradient-to-b from-gray-700 to-gray-800 p-4 text-gray-200">
       <div className="flex justify-center items-center">
         <Link to="/">
-          {" "}
-          {/* Use Link from react-router-dom */}
           <img src="/assets/logo.png" alt="AIR IQ Logo" className="h-12" />
         </Link>
       </div>
@@ -42,7 +40,7 @@ const Sidebar = () => {
                 className={`flex items-center gap-2 px-4 py-2 rounded bg-gray-800 hover:bg-gray-600 transition-colors duration-200 cursor-pointer 
                            ${
                              pathname === link.href
-                               ? "bg-gray-600 text-white"
+                               ? "bg-red-600 text-white"
                                : ""
                            }`}
               >
