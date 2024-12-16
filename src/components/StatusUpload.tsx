@@ -110,7 +110,7 @@ const StatusUpload = () => {
               className="bg-green-400 text-black px-6 py-2 rounded mt-4 hover:bg-green-500"
               disabled={isLoading}
             >
-              FETCH STATUS
+              {isLoading ? <LuLoader2 className="w-6 h-6 animate-spin" /> : <>Fetch Status</>}
             </button>
           </form>
         </div>
@@ -118,35 +118,35 @@ const StatusUpload = () => {
       {flightData.length && (
         <div className="mt-16 w-full">
           {/* Flight Data Container */}
-            <div className="relative">
-              <div className="absolute top-2 right-2 flex gap-2">
-                <button
-                  onClick={(e) => handleCopyButtonClick()}
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Copy Data
-                </button>
-                {/* <button
+          <div className="relative">
+            <div className="absolute top-2 right-2 flex gap-2">
+              <button
+                onClick={(e) => handleCopyButtonClick()}
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Copy Data
+              </button>
+              {/* <button
                   onClick={handleExport}
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
                   Export to Excel
                 </button>*/}
-                <button
-                  onClick={(e) => handleClearButtonClick(e)}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Clear Data
-                </button>
-              </div>
-              <div className="max-h-[650px] overflow-y-auto">
-                  <ul className="p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap list-none w-full">
-                    {flightData.map((result, index) => (
-                      <li key={index}>{result}</li> // Each result on a new line
-                    ))}
-                  </ul>
-              </div>
+              <button
+                onClick={(e) => handleClearButtonClick(e)}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Clear Data
+              </button>
             </div>
+            <div className="max-h-[650px] overflow-y-auto">
+              <ul className="p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap list-none w-full">
+                {flightData.map((result, index) => (
+                  <li key={index}>{result}</li> // Each result on a new line
+                ))}
+              </ul>
+            </div>
+          </div>
           {/* Error Container */}
           {errors?.length && (
             <div className="mt-4 ">
@@ -159,9 +159,6 @@ const StatusUpload = () => {
             </div>
           )}
         </div>
-      )}
-      {isLoading && (
-        <LuLoader2 className='w-6 h-6 animate-spin'  />
       )}
     </>
   );

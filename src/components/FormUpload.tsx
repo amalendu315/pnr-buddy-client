@@ -78,13 +78,10 @@ const FormUpload = () => {
             className="bg-green-400 text-black px-6 py-2 rounded mt-4 hover:bg-green-500"
             disabled={isLoading}
           >
-            DOWNLOAD
+            {isLoading ? <LuLoader2 className="h-6 w-6 animate-spin" /> : <>Download</>}
           </button>
         </form>
       </div>
-      {isLoading && (
-        <LuLoader2  className='h-6 w-6 animate-spin'  />
-      )}
     </div>
   );
 }

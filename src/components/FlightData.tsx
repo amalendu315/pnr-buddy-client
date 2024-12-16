@@ -134,7 +134,7 @@ const FlightDataComponent: React.FC = () => {
             disabled={isLoading}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded whitespace-nowrap"
           >
-            Fetch Flight Data
+            {isLoading ? <LuLoader2 className="h-6 w-6 animate-spin" />:<>Fetch Flight Data</>}
           </button>
         </form>
         {/* ... (error and flightData display) */}
@@ -171,15 +171,11 @@ const FlightDataComponent: React.FC = () => {
             <div className="mt-4 ">
               {/* Remove max height from here */}
               <div className="max-h-[770px] overflow-y-auto">
-              <pre className="bg-red-500 p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap">
-                {errors}
-              </pre>
+                <pre className="bg-red-500 p-4 text-center rounded-md overflow-x-auto whitespace-pre-wrap">
+                  {errors}
+                </pre>
               </div>
             </div>
-          )}
-
-          {isLoading && (
-            <LuLoader2 className="h-6 w-6 animate-spin"/>
           )}
         </div>
       </div>
