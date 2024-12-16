@@ -37,7 +37,7 @@ const Sidebar = () => {
             <li key={index}>
               <Link
                 to={link.href} // Use 'to' instead of 'href'
-                className={`flex items-center gap-2 px-4 py-2 rounded bg-gray-800 hover:bg-gray-600 transition-colors duration-200 cursor-pointer 
+                className={`flex items-center gap-2 px-4 py-2 rounded bg-gray-800 hover:bg-red-600 transition-colors duration-200 cursor-pointer 
                            ${
                              pathname === link.href
                                ? "bg-red-600 text-white"
