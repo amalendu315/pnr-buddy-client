@@ -14,6 +14,7 @@ const fileCodeInfo = {
   "e.xlsx": "Air India Domestic",
   "f.xlsx": "Air India International",
   "h.xlsx": "Air India Express International",
+  "l.xlsx": "Air Arabia",
 };
 
 const FormUpload = () => {
