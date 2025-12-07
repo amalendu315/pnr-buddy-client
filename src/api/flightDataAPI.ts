@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const BASE_URL =
-  "http://localhost:3004";
+  "http://ec2-13-127-133-185.ap-south-1.compute.amazonaws.com:3004";
   
 // const bASE_URL =
 //   "http://localhost:3004"; 
